@@ -247,6 +247,8 @@ return [
     کمترین مبلغ برای  پرداخت در این درگاه 5000 تومان می باشد.',
                         'variza' => '❌ خطا 
     کمترین مبلغ برای  پرداخت در این درگاه 5000 تومان می باشد.',
+                        'rentopay' => '❌ خطا 
+    کمترین مبلغ برای  پرداخت در این درگاه 10000 تومان می باشد.',
                         'cardEnabledNotice' => '💳 کاربر عزیز شماره کارت برای شما فعال شد هم اکنون می توانید خرید خود را انجام دهید.',
                         'cardInstructionAlt' => 'جهت پرداخت مبلغ را به شماره کارت زیر واریز نمایید',
                         'giftDepositAlt' => '🎁 کاربر عزیز مبلغ %s تومان به عنوان هدیه واریز به حساب شما واریز گردید.',
@@ -1828,6 +1830,15 @@ nowpayments.io
 کلید فعلی شما: <code>%s</code>
 
 🔗 آدرس وب‌هوکی که باید در پروفایل واریزا ثبت کنید:
+<code>%s</code>',
+                        'askRentopayApiKey' => '💳 کلید API رنتوپی (X-API-KEY) را از پنل رنتوپی دریافت و وارد کنید:
+
+کلید فعلی شما: <code>%s</code>',
+                        'askRentopaySecretKey' => '🔐 کلید سکرت امضای وب‌هوک رنتوپی (Secret Key) را از پنل رنتوپی دریافت و وارد کنید:
+
+کلید فعلی شما: <code>%s</code>
+
+🔗 آدرس وب‌هوکی که باید در پنل رنتوپی ثبت کنید:
 <code>%s</code>',
                         'askMerchant' => '💳 مرچنت کد خود را دریافت و در این قسمت وارد کنید
         
@@ -3708,6 +3719,7 @@ f,n.n2',
                 'wheelLuck' => '🎲 گردونه شانس',
                 'zarinPal' => '🟡 زرین پال',
                 'variza' => '💳 واریزا (کارت‌به‌کارت خودکار)',
+                'rentopay' => '💳 رنتوپی (کارت‌به‌کارت)',
         ],
         'keyboard' => [
                 'acceptRules' => '✅ قوانین را می پذیرم',
@@ -4161,6 +4173,7 @@ f,n.n2',
                 'yesterday' => '☀️ دیروز',
                 'zarinPalGateway' => 'زرین پال',
                 'varizaGateway' => 'واریزا',
+                'rentopayGateway' => 'رنتوپی',
                 'zarinPalMerchant' => 'مرچنت زرین پال',
                 'varizaApiToken' => 'کلید API واریزا',
                 'varizaWebhookSecret' => 'کلید وب‌هوک واریزا',
@@ -4168,6 +4181,12 @@ f,n.n2',
                 'minAmountVariza' => 'حداقل واریز واریزا',
                 'maxAmountVariza' => 'حداکثر واریز واریزا',
                 'setEducationVariza' => 'آموزش واریزا',
+                'rentopayApiKey' => 'کلید API رنتوپی',
+                'rentopaySecretKey' => 'کلید سکرت رنتوپی',
+                'cashbackRentopay' => 'کش‌بک رنتوپی',
+                'minAmountRentopay' => 'حداقل واریز رنتوپی',
+                'maxAmountRentopay' => 'حداکثر واریز رنتوپی',
+                'setEducationRentopay' => 'آموزش رنتوپی',
                 'zeroBalance' => '0️⃣ صفر کردن موجودی',
                 'panelSetting' => '🎛 تنظیم پنل',
                 'mirzaAgentPanel' => 'نمایندگی میرزا',
@@ -4391,6 +4410,7 @@ f,n.n2',
                 'paymentMethodRialGateway3' => 'درگاه ریالی ۳',
                 'paymentMethodTelegramStar' => 'استار تلگرام',
                 'paymentMethodVariza' => 'واریزا',
+                'paymentMethodRentopay' => 'رنتوپی',
                 'paymentMethodZarinpal' => 'زرین‌پال',
                 'paymentSearchBtn' => 'تعداد کل',
                 'paymentSearchTransactionPlaceholder' => 'آیدی کاربر یا شماره تراکنش...',
@@ -4786,6 +4806,13 @@ f,n.n2',
 - 🧾 شماره سفارش : %s
 - 🔗 شناسه پرداخت واریزا : %s
 - 💳 روش پرداخت : واریزا',
+                'reportRentopay' => '💵 پرداخت جدید
+- 👤 نام کاربری کاربر : @%s
+- 🆔 آیدی عددی کاربر : %s
+- 💸 مبلغ تراکنش : %s تومان
+- 🧾 شماره سفارش : %s
+- 🔗 شناسه پرداخت رنتوپی : %s
+- 💳 روش پرداخت : رنتوپی (کارت‌به‌کارت)',
                 'invoiceTitle' => 'فاکتور پرداخت',
                 'invoiceTransactionNo' => 'شماره تراکنش:',
                 'invoiceAmount' => 'مبلغ پرداختی:',

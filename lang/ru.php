@@ -247,6 +247,8 @@ return [
     Минимальная сумма оплаты через этот шлюз — 5000 туман.',
                         'variza' => '❌ Ошибка 
     Минимальная сумма оплаты через этот шлюз — 5000 туман.',
+                        'rentopay' => '❌ Ошибка 
+    Минимальная сумма оплаты через этот шлюз — 10000 туман.',
                         'cardEnabledNotice' => '💳 Уважаемый пользователь, номер карты активирован для вас; теперь вы можете совершить покупку.',
                         'cardInstructionAlt' => 'Для оплаты внесите сумму на номер карты ниже',
                         'giftDepositAlt' => '🎁 Уважаемый пользователь, сумма %s туман зачислена на ваш счёт в качестве подарка.',
@@ -1828,6 +1830,15 @@ nowpayments.io
 Текущий ключ: <code>%s</code>
 
 🔗 URL вебхука для регистрации в профиле Variza:
+<code>%s</code>',
+                        'askRentopayApiKey' => '💳 Введите API-ключ RentoPay (X-API-KEY):
+
+Текущий ключ: <code>%s</code>',
+                        'askRentopaySecretKey' => '🔐 Введите секретный ключ веб-хука RentoPay (Secret Key):
+
+Текущий ключ: <code>%s</code>
+
+🔗 URL веб-хука для панели RentoPay:
 <code>%s</code>',
                         'askZarinpalMerchant' => '💳 Получите ваш код продавца от ZarinPal и введите его в этом разделе
         
@@ -3724,6 +3735,7 @@ ID пользователя : %s
                 'wheelLuck' => '🎲 Колесо фортуны',
                 'zarinPal' => '🟡 ZarinPal',
                 'variza' => '💳 Variza (автоматический перевод с карты на карту)',
+                'rentopay' => '💳 RentoPay (карта — карта)',
         ],
         'keyboard' => [
                 'acceptRules' => '✅ Я принимаю правила',
@@ -4177,12 +4189,19 @@ ID пользователя : %s
                 'yesterday' => '☀️ Вчера',
                 'zarinPalGateway' => 'ZarinPal',
                 'varizaGateway' => 'Variza',
+                'rentopayGateway' => 'RentoPay',
                 'varizaApiToken' => 'API-токен Variza',
                 'varizaWebhookSecret' => 'Webhook-секрет Variza',
                 'cashbackVariza' => 'Кэшбэк Variza',
                 'minAmountVariza' => 'Минимальная сумма Variza',
                 'maxAmountVariza' => 'Максимальная сумма Variza',
                 'setEducationVariza' => 'Инструкция Variza',
+                'rentopayApiKey' => 'Ключ API RentoPay',
+                'rentopaySecretKey' => 'Секретный ключ RentoPay',
+                'cashbackRentopay' => 'Кэшбэк RentoPay',
+                'minAmountRentopay' => 'Минимум RentoPay',
+                'maxAmountRentopay' => 'Максимум RentoPay',
+                'setEducationRentopay' => 'Инструкция RentoPay',
                 'zarinPalMerchant' => 'Продавец ZarinPal',
                 'zeroBalance' => '0️⃣ Обнулить баланс',
                 'panelSetting' => '🎛 Настройка панели',
@@ -4407,6 +4426,7 @@ ID пользователя : %s
                 'paymentMethodRialGateway3' => 'Риаловый шлюз 3',
                 'paymentMethodTelegramStar' => 'Telegram Stars',
                 'paymentMethodVariza' => 'Variza',
+                'paymentMethodRentopay' => 'RentoPay',
                 'paymentMethodZarinpal' => 'ZarinPal',
                 'paymentSearchBtn' => 'Общее количество',
                 'paymentSearchTransactionPlaceholder' => 'ID пользователя или номер транзакции...',
@@ -4802,6 +4822,13 @@ ID пользователя : %s
 - 🧾 Номер заказа : %s
 - 🔗 Slug платежа Variza : %s
 - 💳 Способ оплаты : Variza',
+                'reportRentopay' => '💵 Новый платёж
+- 👤 Имя пользователя : @%s
+- 🆔 Числовой ID пользователя : %s
+- 💸 Сумма : %s томанов
+- 🧾 Номер заказа : %s
+- 🔗 Токен RentoPay : %s
+- 💳 Способ оплаты : RentoPay (карта — карта)',
                 'invoiceTitle' => 'Счёт на оплату',
                 'invoiceTransactionNo' => 'Номер транзакции:',
                 'invoiceAmount' => 'Оплаченная сумма:',

@@ -231,7 +231,7 @@ $keyboardvariza = json_encode([
 $keyboardrentopay = json_encode([
     'inline_keyboard' => [
         [['text' => $textbotlang['keyboard']['rentopayApiKey'], 'callback_data' => "paygwopt-rentopayApiKey"], ['text' => $textbotlang['keyboard']['rentopaySecretKey'], 'callback_data' => "paygwopt-rentopaySecretKey"]],
-        [['text' => $textbotlang['keyboard']['cashbackRentopay'], 'callback_data' => "paygwopt-cashbackRentopay"]],
+        [['text' => $textbotlang['keyboard']['cashbackRentopay'], 'callback_data' => "paygwopt-cashbackRentopay"], ['text' => $textbotlang['keyboard']['rentopayFeeSplit'], 'callback_data' => "paygwopt-rentopayFeeSplit"]],
         [['text' => $textbotlang['keyboard']['minAmountRentopay'], 'callback_data' => "paygwopt-minAmountRentopay"], ['text' => $textbotlang['keyboard']['maxAmountRentopay'], 'callback_data' => "paygwopt-maxAmountRentopay"]],
         [['text' => $textbotlang['keyboard']['setEducationRentopay'], 'callback_data' => "paygwopt-setEducationRentopay"]],
         [['text' => $textbotlang['keyboard']['backToGateways'], 'callback_data' => "paygwlist"]],

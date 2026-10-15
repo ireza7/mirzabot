@@ -66,7 +66,7 @@ $backmenu_register(["apiiranpay4", "endpointiranpay4", "getcashiranpay4", "getda
 $backmenu_register(["getmaindigitaltron", "getmaxdigitaltron", "helpofflinearze"], $tronnowpayments);
 $backmenu_register(["chashbackstar", "gethelpstar", "getmainaqstar", "maxbalancestar"], $Startelegram);
 $backmenu_register(["variza_api_token", "variza_webhook_secret", "getcashvariza", "getmainvariza", "getmaaxvariza", "helpvariza"], $keyboardvariza);
-$backmenu_register(["rentopay_api_key", "rentopay_secret_key", "getcashrentopay", "getmainrentopay", "getmaaxrentopay", "helprentopay"], $keyboardrentopay);
+$backmenu_register(["rentopay_api_key", "rentopay_secret_key", "rentopay_fee_split", "getcashrentopay", "getmainrentopay", "getmaaxrentopay", "helprentopay"], $keyboardrentopay);
 $backmenu_register([
     "addchannelid", "limit_usertest_allusers", "getimagebackgroundqr", "getpricereqagent",
     "getcronvolumere", "on_hold_day", "getdaycron", "getvolumewarn", "getdaywarn", "getlowbalancealert"
@@ -2503,6 +2503,24 @@ elseif ($datain == "systemsms") {
     sendmessage($from_id, $textbotlang['Admin']['SettingnowPayment']['saveApi'], $keyboardrentopay, 'HTML');
     update("PaySetting", "ValuePay", trim($text), "NamePay", "rentopay_secret_key");
     step('home', $from_id);
+} elseif ($text == $textbotlang['keyboard']['rentopayFeeSplit'] && $adminrulecheck['rule'] == "administrator") {
+    $currentSplit = select("PaySetting", "ValuePay", "NamePay", "rentopay_payer_split_percent")['ValuePay'] ?? 'default';
+    $msg = sprintf($textbotlang['Admin']['gateway']['askRentopayFeeSplit'], $currentSplit);
+    sendmessage($from_id, $msg, $backadmin, 'HTML');
+    step('rentopay_fee_split', $from_id);
+} elseif ($user['step'] == "rentopay_fee_split") {
+    $val = strtolower(trim($text));
+    if ($val === 'default') {
+        update("PaySetting", "ValuePay", "default", "NamePay", "rentopay_payer_split_percent");
+        sendmessage($from_id, $textbotlang['Admin']['gateway']['saveRentopayFeeSplit'], $keyboardrentopay, 'HTML');
+        step('home', $from_id);
+    } elseif (is_numeric($val) && floatval($val) >= 0 && floatval($val) <= 100) {
+        update("PaySetting", "ValuePay", (string) floatval($val), "NamePay", "rentopay_payer_split_percent");
+        sendmessage($from_id, $textbotlang['Admin']['gateway']['saveRentopayFeeSplit'], $keyboardrentopay, 'HTML');
+        step('home', $from_id);
+    } else {
+        sendmessage($from_id, $textbotlang['Admin']['gateway']['errorRentopayFeeSplit'], $backadmin, 'HTML');
+    }
 } elseif ($text == $textbotlang['Admin']['btnKeyboard']['managementPanel'] && $adminrulecheck['rule'] == "administrator") {
     sendmessage($from_id, $textbotlang['Admin']['managepanel']['getLoc'], $json_list_marzban_panel, 'HTML');
     step('GetLocationEdit', $from_id);

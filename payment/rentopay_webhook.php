@@ -95,6 +95,22 @@ if (!$payment) {
 if ($event === 'payment.rejected' || $status === 'REJECTED') {
     if ($payment['payment_Status'] !== 'paid') {
         update("Payment_report", "payment_Status", "reject", "id_order", $payment['id_order']);
+
+        $reason = trim((string) ($data['rejectionReason'] ?? $data['rejection_reason'] ?? ''));
+        if ($reason === '') {
+            $reason = $textbotlang['paymentGateway']['defaultRejectionReason'] ?? 'رسید پرداخت توسط مدیریت درگاه تایید نشد.';
+        }
+
+        $userId = $payment['id_user'] ?? null;
+        if (!empty($userId)) {
+            $buyer = select("user", "*", "id", $userId, "select");
+            $userLang = $buyer['Language'] ?? 'fa';
+            $langPath = __DIR__ . '/../lang/' . (in_array($userLang, ['fa', 'en', 'ru', 'zh']) ? $userLang : 'fa') . '.php';
+            $langData = file_exists($langPath) ? require $langPath : [];
+            $rejTemplate = $langData['users']['Balance']['rejectedNotice'] ?? "❌ کاربر گرامی پرداخت شما به دلیل زیر رد گردید.\n✍️ %s\n🛒 کد پیگیری پرداخت: %s";
+            $rejMsg = sprintf($rejTemplate, $reason, $payment['id_order']);
+            sendmessage($userId, $rejMsg, null, 'HTML');
+        }
     }
     rentopay_webhook_respond(200, 'rejected noted');
 }
@@ -119,9 +135,22 @@ if ($payment['payment_Status'] === 'paid') {
 $billedTomans = (int) $payment['price'];
 $billedRials = $billedTomans * 10;
 
-if ($amountRials < $billedRials) {
+if ($amountRials > 0 && $amountRials < $billedRials) {
     error_log("rentopay webhook: amount mismatch for {$orderId}: billed {$billedRials} Rials, got {$amountRials} Rials");
     rentopay_webhook_respond(400, 'amount mismatch');
+}
+
+// Dual verification with official RentoPay API verify endpoint
+if (!empty($token) && function_exists('verifyPayRentopay')) {
+    $verifyRes = verifyPayRentopay($token);
+    if (isset($verifyRes['success']) && $verifyRes['success'] === false) {
+        error_log("rentopay webhook: verify endpoint failed for token {$token}: " . json_encode($verifyRes));
+        rentopay_webhook_respond(400, 'verification failed');
+    }
+    if (isset($verifyRes['verified']) && $verifyRes['verified'] === false) {
+        error_log("rentopay webhook: token {$token} is not verified");
+        rentopay_webhook_respond(400, 'not verified');
+    }
 }
 
 $order_id = $payment['id_order'];

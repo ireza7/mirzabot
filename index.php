@@ -4918,6 +4918,10 @@ if ($text == "/start" || $datain == "start" || $text == "start") {
             sendmessage($from_id, $textbotlang['users']['Balance']['rentopay'], null, 'HTML');
             return;
         }
+        if ($user['Processing_value'] % 1000 !== 0) {
+            sendmessage($from_id, $textbotlang['users']['Balance']['rentopayMultiple'], null, 'HTML');
+            return;
+        }
         $mainbalance = select("PaySetting", "ValuePay", "NamePay", "minbalancerentopay", "select")['ValuePay'];
         $maxbalance = select("PaySetting", "ValuePay", "NamePay", "maxbalancerentopay", "select")['ValuePay'];
         if ($user['Processing_value'] < $mainbalance || $user['Processing_value'] > $maxbalance) {

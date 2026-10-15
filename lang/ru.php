@@ -249,6 +249,8 @@ return [
     Минимальная сумма оплаты через этот шлюз — 5000 туман.',
                         'rentopay' => '❌ Ошибка 
     Минимальная сумма оплаты через этот шлюз — 10000 туман.',
+                        'rentopayMultiple' => '❌ Ошибка 
+    Сумма платежа в RentoPay должна быть кратна 1000 томанов (10 000 риалов).',
                         'cardEnabledNotice' => '💳 Уважаемый пользователь, номер карты активирован для вас; теперь вы можете совершить покупку.',
                         'cardInstructionAlt' => 'Для оплаты внесите сумму на номер карты ниже',
                         'giftDepositAlt' => '🎁 Уважаемый пользователь, сумма %s туман зачислена на ваш счёт в качестве подарка.',
@@ -1840,6 +1842,17 @@ nowpayments.io
 
 🔗 URL веб-хука для панели RentoPay:
 <code>%s</code>',
+                        'askRentopayFeeSplit' => '⚙️ Настройка доли комиссии покупателя для RentoPay:
+
+Текущая доля покупателя: <b>%s</b>
+
+Введите число от 0 до 100:
+• <code>0</code>: 100%% оплачивает продавец
+• <code>50</code>: поровну (50/50)
+• <code>100</code>: 100%% оплачивает покупатель
+• Или отправьте <code>default</code> для использования настроек по умолчанию из панели RentoPay.',
+                        'saveRentopayFeeSplit' => '✅ Настройка доли комиссии RentoPay успешно сохранена.',
+                        'errorRentopayFeeSplit' => '❌ Ошибка: Введите число от 0 до 100 или слово default.',
                         'askZarinpalMerchant' => '💳 Получите ваш код продавца от ZarinPal и введите его в этом разделе
         
 Ваш текущий код продавца: %s',
@@ -4198,6 +4211,7 @@ ID пользователя : %s
                 'setEducationVariza' => 'Инструкция Variza',
                 'rentopayApiKey' => 'Ключ API RentoPay',
                 'rentopaySecretKey' => 'Секретный ключ RentoPay',
+                'rentopayFeeSplit' => 'Доля комиссии RentoPay',
                 'cashbackRentopay' => 'Кэшбэк RentoPay',
                 'minAmountRentopay' => 'Минимум RentoPay',
                 'maxAmountRentopay' => 'Максимум RentoPay',
@@ -4829,6 +4843,7 @@ ID пользователя : %s
 - 🧾 Номер заказа : %s
 - 🔗 Токен RentoPay : %s
 - 💳 Способ оплаты : RentoPay (карта — карта)',
+                'defaultRejectionReason' => 'Квитанция об оплате отклонена администрацией шлюза.',
                 'invoiceTitle' => 'Счёт на оплату',
                 'invoiceTransactionNo' => 'Номер транзакции:',
                 'invoiceAmount' => 'Оплаченная сумма:',

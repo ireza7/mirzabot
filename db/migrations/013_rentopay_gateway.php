@@ -16,6 +16,7 @@ return static function (PDO $pdo, Schema $schema): void {
         'minbalancerentopay' => '20000',
         'maxbalancerentopay' => '1000000',
         'chashbackrentopay' => '0',
+        'rentopay_payer_split_percent' => 'default',
         'helprentopay' => '2',
     ];
 

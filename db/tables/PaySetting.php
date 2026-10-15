@@ -96,6 +96,7 @@ $values = [
     'minbalancerentopay' => '20000',
     'maxbalancerentopay' => '1000000',
     'chashbackrentopay' => '0',
+    'rentopay_payer_split_percent' => 'default',
     'helprentopay' => '2',
     'helpperfectmony' => '2',
     'helpzarinpal' => '2',
